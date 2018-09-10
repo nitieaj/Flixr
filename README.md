@@ -3,7 +3,7 @@
 
 **Flix** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **6** hours spent in total
+Time spent: **5** hours spent in total
 
 ## User Stories
 
@@ -12,7 +12,7 @@ The following **required** user stories are complete:
 - [x] User sees app icon in home screen and styled launch screen (+1pt)
 - [x] User can scroll through a list of movies currently playing in theaters from The Movie DB API (+5pt)
 - [x] User can "Pull to refresh" the movie list (+2pt)
-- [x ] User sees a loading state while waiting for the movies to load (+2pt)
+- [x] User sees a loading state while waiting for the movies to load (+2pt)
 
 The following **stretch** user stories are implemented:
 
@@ -21,7 +21,7 @@ The following **stretch** user stories are implemented:
 - [ ] While poster is being fetched, user see's a placeholder image (+1pt)
 - [ ] User sees image transition for images coming from network, not when it is loaded from cache (+1pt)
 - [ ] Customize the selection effect of the cell (+1pt)
-- [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete (+2pt)
+- [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete (+2pt)
 
 The following **additional** user stories are implemented:
 
@@ -35,8 +35,10 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+https://imgur.com/a/iwj4Bkr
+https://drive.google.com/file/d/1ErZxMx49dJtyoqQE7WiBOjhJ1VnS4Jtz/view?usp=sharing
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

@@ -16,12 +16,28 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     // set new properties in the view controller with a wider scope that can be seen anywhere in the view controller
     var movies: [[String: Any]] = []
+    //define a variable to stop the refresh once data is fetched with netwrok service
+    var refreshControl:UIRefreshControl!
     override func viewDidLoad() {
+        tableView.rowHeight = 250
         super.viewDidLoad()
+        
+        // make uirefresh control object- take out let to refrence to the global refreshcontrol created above
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
     //how the table view will react to the holder of the sort after data.
         tableView.dataSource = self // self is the now playingviewcontroller
+        fetchMovies()
+    }
+    
+    // function method to be called by self -viewcontroller
+    @objc func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        fetchMovies()
         
-        
+    }
+    // pull to refresh function
+    func fetchMovies() {
         // In point for the URL we want to hit
         
         let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed")!
@@ -38,11 +54,13 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
                 //diffrenciate movies local variable.
                 self.movies = movies
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing() // oubvious here ,so end refreshing .
                 
             }
         }
         task.resume()// call the task to resume
     }
+    
 //how many cells auto complete after specifying uiviewdatasource.
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
@@ -61,9 +79,6 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         let baseURLString = "https://image.tmdb.org/t/p/w500"
         let posterURL = URL(string: baseURLString + posterPathString)!
         cell.posterImageView.af_setImage(withURL: posterURL)
-        
-        
-        
         return cell
     }
     
@@ -73,8 +88,20 @@ class NowPlayingViewController: UIViewController,UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    
 
 }
+
+
+// UIsearchbar
+
+
+
+
+
+
+
+
+
+
+
+
